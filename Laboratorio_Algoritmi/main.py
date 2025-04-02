@@ -19,9 +19,9 @@ def test_priority_queue(queue, name, num_elements=1000):
     print(f"Inserimento completato in {insert_time:.6f} secondi")
 
     # Test MAXIMUM
-    start = time.time()
+    start = time.perf_counter()
     max_value = queue.maximum()
-    max_time = time.time() - start
+    max_time = time.perf_counter() - start
     print(f"Maximum: {max_value} trovato in {max_time:.6f} secondi")
 
     # Test EXTRACT_MAX
@@ -51,9 +51,12 @@ def main():
     results.append(test_priority_queue(unsorted_list, "Lista Concatenata Non Ordinata", num_elements))
     results.append(test_priority_queue(sorted_list, "Lista Concatenata Ordinata", num_elements))
 
-    # Stampa confronto finale
     print("\n📊 Confronto Tempi (in secondi)")
     print(f"{'Struttura':<35}{'Insert':<15}{'Max':<15}{'Extract Max'}")
     structures = ["Max-Heap", "Lista Concatenata Non Ordinata", "Lista Concatenata Ordinata"]
     for i, (insert_t, max_t, extract_t) in enumerate(results):
         print(f"{structures[i]:<35}{insert_t:<15.6f}{max_t:<15.6f}{extract_t:.6f}")
+
+
+if __name__ == '__main__':
+    main()

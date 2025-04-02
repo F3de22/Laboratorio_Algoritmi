@@ -52,5 +52,5 @@ class Heap:
             self.heap[self.parent(index)], self.heap[index] = self.heap[index], self.heap[self.parent(index)]
             index = self.parent(index)
 
-    def maximun(self):
+    def maximum(self):
         return self.heap[0]
