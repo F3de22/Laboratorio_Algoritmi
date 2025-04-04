@@ -5,36 +5,54 @@ from data_structures.linked_list import UnsortedLinkedList
 from data_structures.sorted_linked_list import SortedLinkedList
 
 def test_priority_queue(queue, name, num_elements=1000):
-    """Testa l'inserimento, la ricerca del massimo e l'estrazione del massimo."""
+    """Testa insert, maximum, extract_max e increase_key."""
     print(f"\n{name} - Test con {num_elements} elementi")
 
-    # Genera numeri casuali da inserire
     values = [random.randint(1, 10000) for _ in range(num_elements)]
 
     # Test INSERT
-    start = time.time()
-    for v in values:
-        queue.insert(v)
-    insert_time = time.time() - start
+    start = time.perf_counter()
+    nodes = [queue.insert(v) for v in values]
+    insert_time = time.perf_counter() - start
     print(f"Inserimento completato in {insert_time:.6f} secondi")
 
     # Test MAXIMUM
     start = time.perf_counter()
     max_value = queue.maximum()
     max_time = time.perf_counter() - start
-    print(f"Maximum: {max_value} trovato in {max_time:.6f} secondi")
+    print(f"Maximum: {max_value} trovato in {max_time:.10f} secondi")
 
     # Test EXTRACT_MAX
-    start = time.time()
+    start = time.perf_counter()
     while True:
         try:
             queue.extract_max()
         except IndexError:  # Heap vuoto
             break
-    extract_time = time.time() - start
+    extract_time = time.perf_counter() - start
     print(f"Extract max completato in {extract_time:.6f} secondi")
 
-    return insert_time, max_time, extract_time
+    # Test INCREASE_KEY
+    increase_time = 0.0
+    if isinstance(queue, Heap):
+        if queue.heap:
+            index = len(queue.heap) // 2  # Scegliamo un indice casuale valido
+            new_value = queue.heap[index] + 1000  # Aumentiamo il valore
+            start = time.perf_counter()
+            queue.increase_key(index, new_value)
+            increase_time = time.perf_counter() - start
+            print(f"Increase key completato in {increase_time:.10f} secondi")
+    elif isinstance(queue, (UnsortedLinkedList, SortedLinkedList)):
+        if nodes:
+            node = nodes[len(nodes) // 2]  # Scegliamo un nodo a metà lista
+            new_value = node.value + 1000  # Aumentiamo il valore
+            start = time.perf_counter()
+            queue.increase_key(node, new_value)
+            increase_time = time.perf_counter() - start
+            print(f"Increase key completato in {increase_time:.10f} secondi")
+
+    return insert_time, max_time, extract_time, increase_time
+
 
 
 def main():
@@ -52,10 +70,10 @@ def main():
     results.append(test_priority_queue(sorted_list, "Lista Concatenata Ordinata", num_elements))
 
     print("\n📊 Confronto Tempi (in secondi)")
-    print(f"{'Struttura':<35}{'Insert':<15}{'Max':<15}{'Extract Max'}")
+    print(f"{'Struttura':<35}{'Insert':<15}{'Max':<15}{'Extract Max':<15}{'Increase Key'}")
     structures = ["Max-Heap", "Lista Concatenata Non Ordinata", "Lista Concatenata Ordinata"]
-    for i, (insert_t, max_t, extract_t) in enumerate(results):
-        print(f"{structures[i]:<35}{insert_t:<15.6f}{max_t:<15.6f}{extract_t:.6f}")
+    for i, (insert_t, max_t, extract_t, increase_t) in enumerate(results):
+        print(f"{structures[i]:<35}{insert_t:<15.6f}{max_t:<15.6f}{extract_t:<15.6f}{increase_t:.10f}")
 
 
 if __name__ == '__main__':

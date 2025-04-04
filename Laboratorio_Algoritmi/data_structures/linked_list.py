@@ -10,6 +10,7 @@ class UnsortedLinkedList:
         new_node = node.Node(value)
         new_node.next = self.head
         self.head = new_node
+        return new_node
 
     def maximum(self):
         #Restituisce il massimo
@@ -50,3 +51,9 @@ class UnsortedLinkedList:
             self.head = max_node.next  # Se il massimo è in testa
 
         return max_value
+
+    def increase_key(self, node, new_key):
+        #Aumenta la chiave di un nodo solo se maggiore del valore attuale.
+        if new_key < node.key:
+            raise ValueError("Nuova chiave più piccola di quella corrente")
+        node.value = new_key
