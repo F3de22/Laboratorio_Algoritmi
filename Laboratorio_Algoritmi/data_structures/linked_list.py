@@ -54,6 +54,6 @@ class UnsortedLinkedList:
 
     def increase_key(self, node, new_key):
         #Aumenta la chiave di un nodo solo se maggiore del valore attuale.
-        if new_key < node.key:
+        if new_key < node.value:
             raise ValueError("Nuova chiave più piccola di quella corrente")
         node.value = new_key

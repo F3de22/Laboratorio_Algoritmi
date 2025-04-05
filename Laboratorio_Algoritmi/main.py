@@ -14,13 +14,13 @@ def test_priority_queue(queue, name, num_elements=1000):
     start = time.perf_counter()
     nodes = [queue.insert(v) for v in values]
     insert_time = time.perf_counter() - start
-    print(f"Inserimento completato in {insert_time:.6f} secondi")
+    print(f"Inserimento completato in {insert_time:.5f} secondi")
 
     # Test MAXIMUM
     start = time.perf_counter()
     max_value = queue.maximum()
     max_time = time.perf_counter() - start
-    print(f"Maximum: {max_value} trovato in {max_time:.10f} secondi")
+    print(f"Maximum: {max_value} trovato in {max_time:.8f} secondi")
 
     # Test EXTRACT_MAX
     start = time.perf_counter()
@@ -36,12 +36,12 @@ def test_priority_queue(queue, name, num_elements=1000):
     increase_time = 0.0
     if isinstance(queue, Heap):
         if queue.heap:
-            index = len(queue.heap) // 2  # Scegliamo un indice casuale valido
+            index = len(queue.heap) // 2  # Scegliamo un indice a metà
             new_value = queue.heap[index] + 1000  # Aumentiamo il valore
             start = time.perf_counter()
             queue.increase_key(index, new_value)
             increase_time = time.perf_counter() - start
-            print(f"Increase key completato in {increase_time:.10f} secondi")
+            print(f"Increase key completato in {increase_time:.7f} secondi")
     elif isinstance(queue, (UnsortedLinkedList, SortedLinkedList)):
         if nodes:
             node = nodes[len(nodes) // 2]  # Scegliamo un nodo a metà lista
@@ -49,7 +49,7 @@ def test_priority_queue(queue, name, num_elements=1000):
             start = time.perf_counter()
             queue.increase_key(node, new_value)
             increase_time = time.perf_counter() - start
-            print(f"Increase key completato in {increase_time:.10f} secondi")
+            print(f"Increase key completato in {increase_time:.7f} secondi")
 
     return insert_time, max_time, extract_time, increase_time
 

@@ -26,7 +26,7 @@ class SortedLinkedList:
 
     def increase_key(self, node, new_key):
         #Aumenta il valore e poi riordina la lista.
-        if new_key < node.key:
+        if new_key < node.value:
             raise ValueError("Nuova chiave più piccola di quella corrente")
 
         # Rimuove il nodo dalla posizione attuale
@@ -37,6 +37,9 @@ class SortedLinkedList:
 
     def delete(self, node):
         #Elimina un nodo dalla lista ordinata.
+        if not self.head or not node:
+            return
+
         if self.head == node:
             self.head = node.next
             return
@@ -45,7 +48,7 @@ class SortedLinkedList:
         while current.next and current.next != node:
             current = current.next
 
-        if current.next:
+        if current and current.next == node:
             current.next = node.next
 
     def maximum(self):
