@@ -22,16 +22,6 @@ def test_priority_queue(queue, name, num_elements=1000):
     max_time = time.perf_counter() - start
     print(f"Maximum: {max_value} trovato in {max_time:.8f} secondi")
 
-    # Test EXTRACT_MAX
-    start = time.perf_counter()
-    while True:
-        try:
-            queue.extract_max()
-        except IndexError:  # Heap vuoto
-            break
-    extract_time = time.perf_counter() - start
-    print(f"Extract max completato in {extract_time:.6f} secondi")
-
     # Test INCREASE_KEY
     increase_time = 0.0
     if isinstance(queue, Heap):
@@ -50,6 +40,16 @@ def test_priority_queue(queue, name, num_elements=1000):
             queue.increase_key(node, new_value)
             increase_time = time.perf_counter() - start
             print(f"Increase key completato in {increase_time:.7f} secondi")
+
+    # Test EXTRACT_MAX
+    start = time.perf_counter()
+    while True:
+        try:
+            queue.extract_max()
+        except IndexError:  # Heap vuoto
+            break
+    extract_time = time.perf_counter() - start
+    print(f"Extract max completato in {extract_time:.6f} secondi")
 
     return insert_time, max_time, extract_time, increase_time
 
@@ -73,7 +73,7 @@ def main():
     print(f"{'Struttura':<35}{'Insert':<15}{'Max':<15}{'Extract Max':<15}{'Increase Key'}")
     structures = ["Max-Heap", "Lista Concatenata Non Ordinata", "Lista Concatenata Ordinata"]
     for i, (insert_t, max_t, extract_t, increase_t) in enumerate(results):
-        print(f"{structures[i]:<35}{insert_t:<15.6f}{max_t:<15.6f}{extract_t:<15.6f}{increase_t:.10f}")
+        print(f"{structures[i]:<35}{insert_t:<15.6f}{max_t:<15.7f}{extract_t:<15.6f}{increase_t:.7f}")
 
 
 if __name__ == '__main__':

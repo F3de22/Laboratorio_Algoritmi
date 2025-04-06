@@ -15,7 +15,7 @@ class Heap:
     def insert(self, key):
         #Inserisce la chiave nello heap
         self.heap.append(float('-inf'))
-        self.heap_increase_key(len(self.heap) - 1, key)
+        self.increase_key(len(self.heap) - 1, key)
 
     def max_heapify(self, index):
         #Mantiene la proprietà del max-heap spostando verso il basso il nodo
@@ -42,7 +42,7 @@ class Heap:
         self.max_heapify(0)
         return max_value
 
-    def heap_increase_key(self, index, new_value):
+    def increase_key(self, index, new_value):
         #Aumenta la chiave di un nodo e ripristina l'ordine del max-heap
         if new_value < self.heap[index]:
             raise ValueError("la nuova chiave deve essere maggiore o uguale a quella corrente")
