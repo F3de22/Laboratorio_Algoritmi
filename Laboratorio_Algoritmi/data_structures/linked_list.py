@@ -28,7 +28,7 @@ class UnsortedLinkedList:
     def extract_max(self):
         #Estrae e restituisce il massimo
         if not self.head:
-            raise IndexError("Heap vuoto")
+            raise IndexError("Coda vuota")
 
         max_value = self.head.value
         max_node = self.head
@@ -52,8 +52,8 @@ class UnsortedLinkedList:
 
         return max_value
 
-    def increase_key(self, node, new_key):
+    def increase_key(self, node, new_value):
         #Aumenta la chiave di un nodo solo se maggiore del valore attuale.
-        if new_key < node.value:
+        if new_value < node.value:
             raise ValueError("Nuova chiave più piccola di quella corrente")
-        node.value = new_key
+        node.value = new_value

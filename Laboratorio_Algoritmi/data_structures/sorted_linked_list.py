@@ -54,7 +54,7 @@ class SortedLinkedList:
     def maximum(self):
         #Restituisce il massimo, cioè sempre il primo nodo
         if not self.head:
-            raise IndexError("Heap vuoto")
+            raise IndexError("Coda vuota")
         return self.head.value
 
     def extract_max(self):

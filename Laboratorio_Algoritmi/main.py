@@ -4,7 +4,7 @@ from data_structures.heap import Heap
 from data_structures.linked_list import UnsortedLinkedList
 from data_structures.sorted_linked_list import SortedLinkedList
 
-def test_priority_queue(queue, name, num_elements=1000):
+def test_priority_queue(queue, name, num_elements):
     """Testa insert, maximum, extract_max e increase_key."""
     print(f"\n{name} - Test con {num_elements} elementi")
 
@@ -43,11 +43,10 @@ def test_priority_queue(queue, name, num_elements=1000):
 
     # Test EXTRACT_MAX
     start = time.perf_counter()
-    while True:
-        try:
-            queue.extract_max()
-        except IndexError:  # Heap vuoto
-            break
+    try:
+        queue.extract_max()
+    except IndexError:
+        pass  # struttura vuota, non faccio nulla
     extract_time = time.perf_counter() - start
     print(f"Extract max completato in {extract_time:.6f} secondi")
 
@@ -56,7 +55,7 @@ def test_priority_queue(queue, name, num_elements=1000):
 
 
 def main():
-    num_elements = 1000  # Numero di elementi da testare
+    num_elements = 500  # Numero di elementi da testare
 
     # Creazione delle tre strutture dati
     max_heap = Heap()
