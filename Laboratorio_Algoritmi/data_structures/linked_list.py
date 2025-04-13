@@ -1,4 +1,4 @@
-import node
+from .node import Node
 
 class UnsortedLinkedList:
     #Coda di priorità con lista concatenata non ordinata
@@ -7,7 +7,7 @@ class UnsortedLinkedList:
 
     def insert(self, value):
         #Inserisce un elemento in testa
-        new_node = node.Node(value)
+        new_node = Node(value)
         new_node.next = self.head
         self.head = new_node
         return new_node

@@ -1,4 +1,4 @@
-import node
+from .node import Node
 
 class SortedLinkedList:
     #Coda di priorità con lista concatenata ordinata
@@ -8,7 +8,7 @@ class SortedLinkedList:
 
     def insert(self, value):
         #Inserisce un elemento mantenendo la lista ordinata
-        new_node = node.Node(value)
+        new_node = Node(value)
 
 
         if not self.head or value > self.head.value:  # Inserimento in testa
