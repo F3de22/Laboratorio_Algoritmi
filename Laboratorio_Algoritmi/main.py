@@ -55,7 +55,7 @@ def test_priority_queue(queue, name, num_elements):
 
 
 def main():
-    num_elements = 500  # Numero di elementi da testare
+    num_elements = 10000  # Numero di elementi da testare
 
     # Creazione delle tre strutture dati
     max_heap = Heap()
