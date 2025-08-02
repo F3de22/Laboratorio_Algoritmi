@@ -10,9 +10,9 @@
   - IncreaseValue<br>
 <br>
 on three different data structures:
-  - Max-Heap
-  - Unordered Linked List
-  - Ordered Linked List<br>
+ - Max-Heap
+ - Unordered Linked List
+ - Ordered Linked List<br>
  made by the same number of casual values
  
 ### Differences between Selection-Sort and Quick-Sort
