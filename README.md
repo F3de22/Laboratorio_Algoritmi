@@ -7,7 +7,7 @@
   - Insert
   - getMaximum
   - extractMaximum
-  - IncreaseValue
+  - IncreaseValue<br>
  on three different data structures:
   - Max-Heap
   - Unordered Linked List
