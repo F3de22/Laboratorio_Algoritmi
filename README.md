@@ -3,7 +3,7 @@
 # Introduction
  This Laboratory work is composed by two parts:
  ### Same operations on different data structures
- I analized the (time) cost of the following operations:
+ I analized in Python the (time) cost of the following operations:
   - Insert
   - getMaximum
   - extractMaximum
