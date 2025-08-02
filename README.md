@@ -8,9 +8,9 @@
   - getMaximum
   - extractMaximum
   - IncreaseValue<br>
-<br>
-on three different data structures:
-- Max-Heap
+ <br>
+ on three different data structures:
+ - Max-Heap
  - Unordered Linked List
  - Ordered Linked List<br>
  made by the same number of casual values
