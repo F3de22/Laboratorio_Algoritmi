@@ -8,7 +8,7 @@
   - getMaximum
   - extractMaximum
   - IncreaseValue<br>
- on three different data structures:
+on three different data structures:
   - Max-Heap
   - Unordered Linked List
   - Ordered Linked List
